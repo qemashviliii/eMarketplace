@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Marketplace
+  datasource:
+    url: jdbc:postgresql://localhost:5432/eMarketplace
+    username: postgres
+    password: Grafikaferwera12.
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8090

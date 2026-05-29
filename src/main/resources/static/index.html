@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eMarketplace - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+    <h1 onclick="location.href='index.html'">eMarketplace</h1>
+    <a href="new-item.html" class="new-btn">New</a>
+</div>
+
+<div class="container">
+    <div class="total-count"><span id="totalItems">0</span> items in total</div>
+
+    <div class="grid" id="itemsGrid"></div>
+
+    <div class="pagination">
+        <button id="prevBtn" onclick="changePage(-1)">&lt;</button>
+        <span id="pageNumber">1</span>
+        <button id="nextBtn" onclick="changePage(1)">&gt;</button>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

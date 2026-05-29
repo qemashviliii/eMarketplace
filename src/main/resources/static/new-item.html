@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eMarketplace - Add Item</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+    <h1 onclick="location.href='index.html'">eMarketplace</h1>
+</div>
+
+<div class="form-container">
+    <h2>Add new item</h2>
+    <form id="itemForm">
+        <div class="row">
+            <div class="form-group">
+                <label for="name">Title</label>
+                <input type="text" id="name" required placeholder="Item title">
+            </div>
+            <div class="form-group">
+                <label for="price">Price ($)</label>
+                <input type="number" step="0.01" id="price" required placeholder="Price">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Photo</label>
+            <input type="file" id="photo" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" required placeholder="Write a detailed description..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+<script src="new-item.js"></script>
+</body>
+</html>
