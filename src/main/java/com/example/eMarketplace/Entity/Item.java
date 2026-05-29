@@ -1,35 +1,37 @@
 package com.example.eMarketplace.Entity;
 
-import jakarta.persistence.Entity;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 
 @Entity
 @Table(name = "items")
-@AllArgsConstructor
-@NoArgsConstructor
-
 public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private Long price;
-    @Column()
+
+    @Column(columnDefinition = "TEXT")
     private String description;
-    @Column()
+
     private LocalDateTime submissionTime;
-    @Column()
+
     private String photoUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Item() {
+    }
 
     public Long getId() {
         return id;
@@ -37,14 +39,6 @@ public class Item {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Long getPrice() {
@@ -55,12 +49,12 @@ public class Item {
         this.price = price;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDateTime getSubmissionTime() {
@@ -77,5 +71,21 @@ public class Item {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

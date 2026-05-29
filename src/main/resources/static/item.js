@@ -1,34 +1,73 @@
-const urlParams = new URLSearchParams(window.location.search);
+const urlParams =
+new URLSearchParams(window.location.search);
+
 const itemId = urlParams.get('id');
 
 async function loadItemDetails() {
+
     if (!itemId) {
-        document.getElementById('detailsContainer').innerHTML = "<h1>Invalid request</h1>";
+
+        document.getElementById(
+            'detailsContainer'
+        ).innerHTML = '<h1>Invalid item</h1>';
+
         return;
     }
 
     try {
-        const response = await fetch(`/market/${itemId}`);
-        if (response.ok) {
-            const item = await response.json();
 
-            document.getElementById('itemImg').src = item.photoUrl;
-            document.getElementById('itemTitle').innerText = item.name;
-            document.getElementById('itemPrice').innerText = item.price + '$';
+        const response =
+        await fetch(`/market/${itemId}`);
 
-            const date = new Date(item.submissionTime);
-            document.getElementById('itemDate').innerText = date.toLocaleString();
+        if (!response.ok) {
 
-            document.getElementById('itemDescription').innerText = item.description;
-        } else {
-            document.getElementById('detailsContainer').innerHTML = "<h1>Item not found!</h1><a href='index.html'>Back to home</a>";
+            throw new Error('Not found');
         }
+
+        const item = await response.json();
+
+        document.getElementById(
+            'itemImg'
+        ).src =
+        item.photoUrl || 'placeholder.png';
+
+        document.getElementById(
+            'itemTitle'
+        ).innerText = item.name;
+
+        document.getElementById(
+            'itemPrice'
+        ).innerText = item.price + '$';
+
+        document.getElementById(
+            'itemDescription'
+        ).innerText = item.description;
+
+        document.getElementById(
+            'itemSeller'
+        ).innerText =
+        `Seller: ${item.username}`;
+
+        const date =
+        new Date(item.submissionTime);
+
+        document.getElementById(
+            'itemDate'
+        ).innerText =
+        date.toLocaleString();
+
     } catch (error) {
+
         console.error(error);
-        document.getElementById('detailsContainer').innerHTML = "<h1>Error loading details</h1>";
+
+        document.getElementById(
+            'detailsContainer'
+        ).innerHTML =
+        '<h1>Error loading item</h1>';
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    loadItemDetails();
-});
+window.addEventListener(
+    'DOMContentLoaded',
+    loadItemDetails
+);
