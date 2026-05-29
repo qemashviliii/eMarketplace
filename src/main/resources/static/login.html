@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eMarketplace - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+    <h1 onclick="location.href='index.html'">eMarketplace</h1>
+
+    <div class="header-right">
+        <a href="register.html" class="auth-btn">
+            Register
+        </a>
+    </div>
+</div>
+
+<div class="form-container">
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+
+        <div class="form-group">
+            <label>Username or Email</label>
+            <input
+                    type="text"
+                    id="login"
+                    placeholder="Username or email"
+                    required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+            >
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Login
+        </button>
+
+    </form>
+
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>
